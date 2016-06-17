@@ -4,6 +4,7 @@
 
 [![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
+[![Travis](https://img.shields.io/travis/lubeast/PullLaunchRocket/master.svg?style=flat-square)](https://travis-ci.org/lubeast/PullLaunchRocket)
 
 Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
 
@@ -11,12 +12,24 @@ Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of 
 
 ### Usage
 *You can have a look at Sample Project* `sample` for better use.
-1.include the library as local library project in your module-level `build.gradle`
-```groove
-compile 'com.lumenghz'
+- Add it in your root `build.gradle` at the end of repositories:
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
 ```
 
-2. `PullToRefreshView` widget in your layout.xml
+- Add the dependency in your module-level `build.gradle`
+```groovy
+dependencies {
+    compile 'com.github.lubeast:PullLaunchRocket:1.0.0'
+}
+```
+
+- `PullToRefreshView` widget in your layout.xml
 ```xml
 <lumenghz.com.pullrefresh.PullToRefreshView
         android:id="@+id/pull_to_refresh"
@@ -37,7 +50,7 @@ compile 'com.lumenghz'
 </lumenghz.com.pullrefresh.PullToRefreshView>
 ```
 
-3. Initial the `PullToRefreshView` and setup `OnRefreshListener` in your `onCreate` method
+- Initial the `PullToRefreshView` and setup `OnRefreshListener` in your `onCreate` method
 ```java
 mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
     @Override
@@ -52,7 +65,7 @@ mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener(
  });
 ```
 
-4.You can change refresh state through call
+- You can change refresh state through call
 ```java
 mPullToRefreshView.setRefreshing(boolean isRefreshing)
 ```
