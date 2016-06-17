@@ -111,7 +111,7 @@ public class RocketRefreshView extends BaseRefreshView {
         mFire2 = CreateBitmapFactory.getBitmapFromImage(R.drawable.fire2, mContext);
         mFire3 = CreateBitmapFactory.getBitmapFromImage(R.drawable.fire3, mContext);
         mRocket = CreateBitmapFactory.getBitmapFromImage(R.drawable.rocket, mContext);
-        mSky = CreateBitmapFactory.getBitmapFromImage(R.drawable.sky, mContext);
+        mSky = CreateBitmapFactory.getBitmapFromImage(R.drawable.out_space, mContext);
         mSky = Bitmap.createScaledBitmap(mSky, mScreenWidth, mSkyHeight, true);
     }
 
