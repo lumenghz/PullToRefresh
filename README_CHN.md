@@ -2,6 +2,7 @@
 
 [![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
+[![Travis](https://img.shields.io/travis/lubeast/PullLaunchRocket/master.svg?style=flat-square)](https://travis-ci.org/lubeast/PullLaunchRocket)
 
 感谢[Yalantis](https://github.com/Yalantis)为下拉刷新创建了一个炒鸡棒的逻辑案例, 也是`PullLaunchRocket`的基础.
 
@@ -12,9 +13,24 @@
 ### 使用
 *为了更好使用也可参照示例工程`sample`*
 
-1.在module层级`build.gradle`中加入
-`compile 'com.lumenghz.'pullrefresh`
-2.在布局文件中使用`PullToRefreshView`
+- 在project层级`build.gradle`中加入
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+- 在module层级`build.gradle`中加入
+```groovy
+dependencies {
+    compile 'com.github.lubeast:PullLaunchRocket:1.0.0'
+}
+```
+
+- 在布局文件中使用`PullToRefreshView`
 ```xml
 <lumenghz.com.pullrefresh.PullToRefreshView
         android:id="@+id/pull_to_refresh"
