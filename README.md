@@ -7,6 +7,8 @@
 
 Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
 
+Welcom to `Star` :D
+
 ![sample](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif)
 
 ### Usage

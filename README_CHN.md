@@ -5,6 +5,8 @@
 
 感谢[Yalantis](https://github.com/Yalantis)为下拉刷新创建了一个炒鸡棒的逻辑案例, 也是`PullLaunchRocket`的基础.
 
+欢迎各位点个`Star`给我.
+
 ![sample](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif)
 
 ### 使用
