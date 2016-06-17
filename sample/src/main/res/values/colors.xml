@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#303030</color>
+    <color name="colorPrimaryDark">#303030</color>
+    <color name="colorAccent">#bfbfbf</color>
+
+    <color name="airplane">#6fa7d7</color>
+    <color name="bridge">#ca703f</color>
+    <color name="flower">#c5c5c6</color>
+    <color name="big_ben">#3e713f</color>
+</resources>

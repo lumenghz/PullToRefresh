@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PullToRefreshView">
+        <attr name="lrefresh" format="enum">
+            <enum name="rocket" value="0" />
+        </attr>
+    </declare-styleable>
+</resources>
