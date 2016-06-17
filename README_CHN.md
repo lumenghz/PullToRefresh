@@ -1,22 +1,18 @@
 ## PullLaunchRocket
 
-[中文文档](./README_CHN.md)
-
 [![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
 
-Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
+感谢[Yalantis](https://github.com/Yalantis)为下拉刷新创建了一个炒鸡棒的逻辑案例, 也是`PullLaunchRocket`的基础.
 
 ![sample](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif)
 
-### Usage
-*You can have a look at Sample Project* `sample` for better use.
-1.include the library as local library project in your module-level `build.gradle`
-```groove
-compile 'com.lumenghz'
-```
+### 使用
+*为了更好使用也可参照示例工程`sample`*
 
-2. `PullToRefreshView` widget in your layout.xml
+1.在module层级`build.gradle`中加入
+`compile 'com.lumenghz.'pullrefresh`
+2.在布局文件中使用`PullToRefreshView`
 ```xml
 <lumenghz.com.pullrefresh.PullToRefreshView
         android:id="@+id/pull_to_refresh"
@@ -36,8 +32,7 @@ compile 'com.lumenghz'
 
 </lumenghz.com.pullrefresh.PullToRefreshView>
 ```
-
-3. Initial the `PullToRefreshView` and setup `OnRefreshListener` in your `onCreate` method
+3.在`onCreate`方法中初始化此View并添加刷新监听
 ```java
 mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
     @Override
@@ -51,8 +46,4 @@ mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener(
     }
  });
 ```
-
-4.You can change refresh state through call
-```java
-mPullToRefreshView.setRefreshing(boolean isRefreshing)
-```
+4.你可以调用`mPullToRefreshView.setRefreshing(boolean isRefreshing);`修改刷新状态.

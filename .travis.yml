@@ -1,0 +1,23 @@
+language: android
+
+sudo: false
+
+android:
+  components:
+  - platform-tools
+  - tools
+  - build-tools-23.0.3
+  - android-23
+  - extra-android-m2repository
+  - extra-google-m2repository
+
+script:
+- ./gradlew assembleRelease
+mvim
+deploy:
+  provider: releases
+  api_key:
+    secure: uNBKygZvLAvIZZG9gssfqIWwU0eXXstCmWfZXk9Z40rutmPuJg5d6vJCLi0fYUU16bGywfDJn8nsOlRJibgLbA7+k29GkCIzsXUNoDpWnEFZBCVCkAnKgqU6KYdza29tapZ8+owDlfsCxHRUjAjWGO4pl6FNM0XozoUCZtLUg0I0Tnh8y0oGwZTTRk4gaxpYhTkTbL+twnvHd9CUCEz4+N6ABJTkf3Trl69iPOg38Qvxb3qzVcTCWgCI5CFqrOxfu9H6nC43c4iUghtE8KRiAdINdSvQKU2paI0oBS1e0qIRZysmHJFAABqLSkbHbPubAEhINrIap5/gwu2TpWEbiD2ZQrgF8znq5Q5hrWtxpKEnCSTf812EZChJTAsDkzSJLGqLRZRPdJ1/Cl1YKo+EdXQKr8W11L4cA9/8dJNWd+VPGKiR3rN5NPk3lbzqbw4YSHSfoVbarZMGV4xbXJ/EXFUnb5Mj4AYQbbmZgS08CEi4ni7GA92utH0crps4u6YtIT5gmdE8eZXi4grWTxaeais5NsIyyrdu9qsDZfnxLzlLX9KBxdWanCEfmMlJPhiq1eqw91PHHLY9Wekdd383BK+Sd3pERokhT8QDSFHNRZv1YDKxza8A/dsKcOFlHZo17dm4TqCaRn0jMeyvcX1XpgFe0uDj8vlaUR+YtB6HMG8=
+  file: library/build/outputs/aar/library-release.aar
+  on:
+    tags: true
