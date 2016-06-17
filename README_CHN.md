@@ -50,7 +50,7 @@ dependencies {
 
 </lumenghz.com.pullrefresh.PullToRefreshView>
 ```
-3.在`onCreate`方法中初始化此View并添加刷新监听
+- 在`onCreate`方法中初始化此View并添加刷新监听
 ```java
 mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
     @Override
@@ -64,4 +64,4 @@ mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener(
     }
  });
 ```
-4.你可以调用`mPullToRefreshView.setRefreshing(boolean isRefreshing);`修改刷新状态.
+- 你可以调用`mPullToRefreshView.setRefreshing(boolean isRefreshing);`修改刷新状态.
