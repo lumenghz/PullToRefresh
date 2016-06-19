@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pulllaunchrocket by lubeast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pulllaunchrocket</h1>
+      <h2 class="project-tagline">PullToRefresh</h2>
+      <a href="https://github.com/lubeast/PullLaunchRocket" class="btn">View on GitHub</a>
+      <a href="https://github.com/lubeast/PullLaunchRocket/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lubeast/PullLaunchRocket/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="pulllaunchrocket" class="anchor" href="#pulllaunchrocket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PullLaunchRocket</h2>
+
+<p><a href="./README_CHN.md">中文文档</a></p>
+
+<p><a href="https://twitter.com/LuMengHZ"><img src="https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square" alt="Twitter"></a>
+<a href="https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE"><img src="https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square" alt="License"></a>
+<a href="https://travis-ci.org/lubeast/PullLaunchRocket"><img src="https://img.shields.io/travis/lubeast/PullLaunchRocket/master.svg?style=flat-square" alt="Travis"></a></p>
+
+<p>Thanks to <a href="https://github.com/Yalantis">Yalantis</a> for creating a great logic of <code>PullToRefresh</code>. And that's logic is the fundation of <code>PullLaunchRocket</code> also.</p>
+
+<p>Welcom to <code>Star</code> :D</p>
+
+<p><img src="https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif" alt="sample"></p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<p><em>You can have a look at Sample Project</em> <code>sample</code> for better use.</p>
+
+<ul>
+<li>Add it in your root <code>build.gradle</code> at the end of repositories:</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>allprojects {
+        repositories {
+            <span class="pl-k">..</span>.
+            maven { url <span class="pl-s"><span class="pl-pds">"</span>https://jitpack.io<span class="pl-pds">"</span></span> }
+        }
+    }</pre></div>
+
+<ul>
+<li>Add the dependency in your module-level <code>build.gradle</code>
+</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.github.lubeast:PullLaunchRocket:1.0.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<ul>
+<li>
+<code>PullToRefreshView</code> widget in your layout.xml</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">lumenghz</span>.com.pullrefresh.PullToRefreshView
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/pull_to_refresh<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">lrefresh</span>=<span class="pl-s"><span class="pl-pds">"</span>rocket<span class="pl-pds">"</span></span>
+        &gt;
+
+        &lt;<span class="pl-ent">ListView</span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/list_view<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">divider</span>=<span class="pl-s"><span class="pl-pds">"</span>@null<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">dividerHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>0dp<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fadingEdge</span>=<span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>
+            /&gt;
+
+&lt;/<span class="pl-ent">lumenghz</span>.com.pullrefresh.PullToRefreshView&gt;</pre></div>
+
+<ul>
+<li>Initial the <code>PullToRefreshView</code> and setup <code>OnRefreshListener</code> in your <code>onCreate</code> method</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre>mPullToRefreshView<span class="pl-k">.</span>setOnRefreshListener(<span class="pl-k">new</span> <span class="pl-smi">PullToRefreshView</span>.<span class="pl-smi">OnRefreshListener</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onRefresh</span>() {
+        mPullToRefreshView<span class="pl-k">.</span>postDelayed(<span class="pl-k">new</span> <span class="pl-smi">Runnable</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">run</span>() {
+                mPullToRefreshView<span class="pl-k">.</span>setRefreshing(<span class="pl-c1">false</span>);
+            }
+        }, <span class="pl-c1">REFRESH_DELAY</span>);
+    }
+ });</pre></div>
+
+<ul>
+<li>You can change refresh state through call</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre>mPullToRefreshView<span class="pl-k">.</span>setRefreshing(<span class="pl-k">boolean</span> isRefreshing)</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lubeast/PullLaunchRocket">Pulllaunchrocket</a> is maintained by <a href="https://github.com/lubeast">lubeast</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
