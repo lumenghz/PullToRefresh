@@ -26,19 +26,19 @@
 <a href="https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE"><img src="https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square" alt="License"></a>
 <a href="https://travis-ci.org/lubeast/PullLaunchRocket"><img src="https://img.shields.io/travis/lubeast/PullLaunchRocket/master.svg?style=flat-square" alt="Travis"></a></p>
 
-<p>感谢<a href="https://github.com/Yalantis">Yalantis</a>为下拉刷新创建了一个炒鸡棒的逻辑案例, 也是<code>PullLaunchRocket</code>的基础.</p>
+<p>Thanks to <a href="https://github.com/Yalantis">Yalantis</a> for creating a great logic of <code>PullToRefresh</code>. And that's logic is the fundation of <code>PullLaunchRocket</code> also.</p>
 
-<p>欢迎各位点个<code>Star</code>给我.</p>
+<p>Welcom to <code>Star</code> :D</p>
 
 <p><img src="https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif" alt="sample"></p>
 
 <h3>
-<a id="使用" class="anchor" href="#%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用</h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
 
-<p><em>为了更好使用也可参照示例工程<code>sample</code></em></p>
+<p><em>You can have a look at Sample Project</em> <code>sample</code> for better use.</p>
 
 <ul>
-<li>在project层级<code>build.gradle</code>中加入</li>
+<li>Add it in your root <code>build.gradle</code> at the end of repositories:</li>
 </ul>
 
 <div class="highlight highlight-source-groovy"><pre>allprojects {
@@ -49,7 +49,8 @@
     }</pre></div>
 
 <ul>
-<li>在module层级<code>build.gradle</code>中加入</li>
+<li>Add the dependency in your module-level <code>build.gradle</code>
+</li>
 </ul>
 
 <div class="highlight highlight-source-groovy"><pre>dependencies {
@@ -57,8 +58,8 @@
 }</pre></div>
 
 <ul>
-<li>在布局文件中使用<code>PullToRefreshView</code>
-</li>
+<li>
+<code>PullToRefreshView</code> widget in your layout.xml</li>
 </ul>
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">lumenghz</span>.com.pullrefresh.PullToRefreshView
@@ -80,7 +81,7 @@
 &lt;/<span class="pl-ent">lumenghz</span>.com.pullrefresh.PullToRefreshView&gt;</pre></div>
 
 <ul>
-<li>在<code>onCreate</code>方法中初始化此View并添加刷新监听</li>
+<li>Initial the <code>PullToRefreshView</code> and setup <code>OnRefreshListener</code> in your <code>onCreate</code> method</li>
 </ul>
 
 <div class="highlight highlight-source-java"><pre>mPullToRefreshView<span class="pl-k">.</span>setOnRefreshListener(<span class="pl-k">new</span> <span class="pl-smi">PullToRefreshView</span>.<span class="pl-smi">OnRefreshListener</span>() {
@@ -96,8 +97,10 @@
  });</pre></div>
 
 <ul>
-<li>你可以调用<code>mPullToRefreshView.setRefreshing(boolean isRefreshing);</code>修改刷新状态.</li>
+<li>You can change refresh state through call</li>
 </ul>
+
+<div class="highlight highlight-source-java"><pre>mPullToRefreshView<span class="pl-k">.</span>setRefreshing(<span class="pl-k">boolean</span> isRefreshing)</pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/lubeast/PullLaunchRocket">Pulllaunchrocket</a> is maintained by <a href="https://github.com/lubeast">lubeast</a>.</span>
