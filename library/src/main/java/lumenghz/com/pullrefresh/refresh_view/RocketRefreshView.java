@@ -83,7 +83,8 @@ public class RocketRefreshView extends BaseRefreshView {
         });
     }
 
-    private void initialDimens(int viewWidth) {
+    @Override
+    protected void initialDimens(int viewWidth) {
         if (viewWidth <= 0 || viewWidth == mScreenWidth) return;
         mScreenWidth = viewWidth;
 
@@ -267,8 +268,9 @@ public class RocketRefreshView extends BaseRefreshView {
         return false;
     }
 
-    private void setupAnimations() {
-        AnimationFractory animationFractory = new AnimationFractory();
+    @Override
+    protected void setupAnimations() {
+        AnimationFactory animationFractory = new AnimationFactory();
         mFireBurnAnimation = animationFractory.getFireBurn(new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {

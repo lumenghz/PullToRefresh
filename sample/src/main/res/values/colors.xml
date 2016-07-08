@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2B2E4A</color>
     <color name="colorPrimaryDark">#2B2E4A</color>
-    <color name="colorAccent">#E84545</color>
+    <color name="colorAccent">#e1e0e0</color>
 
     <color name="airplane">#6fa7d7</color>
     <color name="bridge">#ca703f</color>

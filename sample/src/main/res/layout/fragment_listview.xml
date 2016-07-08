@@ -10,7 +10,7 @@
         android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lrefresh="rocket"
+        app:lrefresh="sun"
         >
 
         <ListView

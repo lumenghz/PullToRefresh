@@ -22,6 +22,7 @@ import java.security.InvalidParameterException;
 
 import lumenghz.com.pullrefresh.refresh_view.BaseRefreshView;
 import lumenghz.com.pullrefresh.refresh_view.RocketRefreshView;
+import lumenghz.com.pullrefresh.refresh_view.SunRefreshView;
 import lumenghz.com.pullrefresh.util.Utils;
 
 /**
@@ -30,10 +31,12 @@ import lumenghz.com.pullrefresh.util.Utils;
  */
 public class PullToRefreshView extends ViewGroup {
     private static final int   DRAG_MAX_DISTANCE               = 120;
+    private static final int   DRAW_MAX_DISTANCE_SUN           = 140;
     private static final float DRAG_RATE                       = .5f;
     private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
 
-    public static final int STYPE_ROCKET                  = 0;
+    public static final int TYPE_ROCKET                   = 0;
+    public static final int TYPE_SUN                      = 1;
     public static final int MAX_OFFSET_ANIMATION_DURATION = 700;
 
     private static final int INVALID_POINTER = -1;
@@ -78,27 +81,38 @@ public class PullToRefreshView extends ViewGroup {
     public PullToRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PullToRefreshView);
-        final int type = a.getInteger(R.styleable.PullToRefreshView_lrefresh, STYPE_ROCKET);
+        final int type = a.getInteger(R.styleable.PullToRefreshView_lrefresh, TYPE_ROCKET);
         a.recycle();
 
         mDecelerateInterpolator = new DecelerateInterpolator(DECELERATE_INTERPOLATION_FACTOR);
-        mTotalDragDistance = Utils.convertDpToPixel(context, DRAG_MAX_DISTANCE);
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
         mRefreshView = new ImageView(context);
 
-        setRefreshStyle(type);
+        setRefreshStyle(context, type);
 
         addView(mRefreshView);
         setWillNotDraw(false);
         ViewCompat.setChildrenDrawingOrderEnabled(this, true);
     }
 
-    private void setRefreshStyle(int type) {
+    /**
+     * Set landscape's height dynamically because different landscape suitable different heights.
+     *
+     * @param context context
+     * @param type    type of theme which chosen by user
+     * @see {@link #mTotalDragDistance = Utils.convertDpToPixel} in this method
+     */
+    private void setRefreshStyle(Context context, int type) {
         setRefreshing(false);
         switch (type) {
-            case STYPE_ROCKET:
+            case TYPE_ROCKET:
                 mBaseRefreshView = new RocketRefreshView(getContext(), this);
+                mTotalDragDistance = Utils.convertDpToPixel(context, DRAG_MAX_DISTANCE);
+                break;
+            case TYPE_SUN:
+                mBaseRefreshView = new SunRefreshView(getContext(), this);
+                mTotalDragDistance = Utils.convertDpToPixel(context, DRAW_MAX_DISTANCE_SUN);
                 break;
             default:
                 throw new InvalidParameterException("Type is not exists");

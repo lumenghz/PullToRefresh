@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 
 import lumenghz.com.pullrefresh.PullToRefreshView;
+import lumenghz.com.pullrefresh.util.Utils;
 
 /**
  * @author lumeng on 2016-06-16.
@@ -30,6 +31,14 @@ public abstract class BaseRefreshView extends Drawable implements Drawable.Callb
     public abstract void setPercent(float percent, boolean invalidate);
 
     public abstract void offsetTopAndBottom(int offset);
+
+    protected abstract void initialDimens(int viewWidth);
+
+    protected abstract void setupAnimations();
+
+    protected int getPixel(int dp) {
+        return Utils.convertDpToPixel(getContext(), dp);
+    }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
