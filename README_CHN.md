@@ -8,7 +8,13 @@
 
 欢迎各位点个`Star`给我.
 
-![sample](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif)
+- 样式一: 发射火箭
+
+![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/rocket.gif)
+
+- 样式二: 太阳升起(仿58同城刷新效果)
+
+![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sunraise.gif)
 
 ### 使用
 *为了更好使用也可参照示例工程`sample`*
@@ -26,7 +32,7 @@ allprojects {
 - 在module层级`build.gradle`中加入
 ```groovy
 dependencies {
-    compile 'com.github.lubeast:PullLaunchRocket:1.0.0'
+    compile 'com.github.lubeast:PullLaunchRocket:1.0.1'
 }
 ```
 

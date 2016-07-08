@@ -10,7 +10,13 @@ Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of 
 
 Welcom to `Star` :D
 
-![sample](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sample.gif)
+- style one: launch rocket
+
+![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/rocket.gif)
+
+- style two: sun raise
+
+![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sunraise.gif)
 
 ### Usage
 *You can have a look at Sample Project* `sample` for better use.
@@ -27,7 +33,7 @@ allprojects {
 - Add the dependency in your module-level `build.gradle`
 ```groovy
 dependencies {
-    compile 'com.github.lubeast:PullLaunchRocket:1.0.0'
+    compile 'com.github.lubeast:PullLaunchRocket:1.0.1'
 }
 ```
 
