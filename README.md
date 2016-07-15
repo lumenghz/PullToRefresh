@@ -33,7 +33,7 @@ allprojects {
 - Add the dependency in your module-level `build.gradle`
 ```groovy
 dependencies {
-    compile 'com.github.lubeast:PullLaunchRocket:1.0.1'
+    compile 'com.github.lubeast:PullToRefresh:1.0.1'
 }
 ```
 

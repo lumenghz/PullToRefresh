@@ -32,7 +32,7 @@ allprojects {
 - 在module层级`build.gradle`中加入
 ```groovy
 dependencies {
-    compile 'com.github.lubeast:PullLaunchRocket:1.0.1'
+    compile 'com.github.lubeast:PullToRefresh:1.0.1'
 }
 ```
 
