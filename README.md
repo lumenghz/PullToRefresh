@@ -5,10 +5,11 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
 [![Travis](https://img.shields.io/travis/lubeast/PullToRefresh/master.svg?style=flat-square)](https://travis-ci.org/lubeast/PullToRefresh)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PullToRefresh-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/3943)
 
 Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
 
-Welcom to `Star` :D
+Give me a `Star` please :D  And welcome to contact me or make a PR if you have any good style, we make it better together.
 
 - style one: launch rocket
 
