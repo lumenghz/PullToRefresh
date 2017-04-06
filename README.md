@@ -7,6 +7,8 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PullToRefresh-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/3943)
 [![Github Issues](https://img.shields.io/github/issues/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullToRefresh/issues)
 
+You guys can see [another project](https://github.com/lubeast/AlphaLayout) depends on this one.
+
 Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
 
 Give me a `Star` please :D  And welcome to contact me or make a PR if you have any good style, we make it better together.
