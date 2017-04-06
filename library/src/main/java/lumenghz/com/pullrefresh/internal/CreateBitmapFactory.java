@@ -1,4 +1,4 @@
-package lumenghz.com.pullrefresh.refresh_view;
+package lumenghz.com.pullrefresh.internal;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +18,7 @@ public class CreateBitmapFactory {
         mOptions.inPreferredConfig = Bitmap.Config.RGB_565;
     }
 
-    static Bitmap getBitmapFromImage(@DrawableRes int id, Context context) {
+    public static Bitmap getBitmapFromImage(@DrawableRes int id, Context context) {
         return BitmapFactory.decodeResource(context.getResources(), id, mOptions);
     }
 }

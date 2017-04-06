@@ -1,7 +1,6 @@
 package lumenghz.com.pullrefresh;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
@@ -22,7 +21,6 @@ import java.security.InvalidParameterException;
 
 import lumenghz.com.pullrefresh.refresh_view.BaseRefreshView;
 import lumenghz.com.pullrefresh.refresh_view.RocketRefreshView;
-import lumenghz.com.pullrefresh.refresh_view.SunRefreshView;
 import lumenghz.com.pullrefresh.util.Utils;
 
 /**
@@ -30,13 +28,10 @@ import lumenghz.com.pullrefresh.util.Utils;
  *         jiahehz@gmail.com
  */
 public class PullToRefreshView extends ViewGroup {
-    private static final int   DRAG_MAX_DISTANCE               = 120;
-    private static final int   DRAW_MAX_DISTANCE_SUN           = 140;
-    private static final float DRAG_RATE                       = .5f;
-    private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
+    private static final int DEFAULT_DRAG_MAX_DISTANCE = 120;
+    private static final float DEFAULT_DRAG_RATE = .5f;
+    private static final float DEFAULT_DECELERATE_INTERPOLATION_FACTOR = 2f;
 
-    public static final int TYPE_ROCKET                   = 0;
-    public static final int TYPE_SUN                      = 1;
     public static final int MAX_OFFSET_ANIMATION_DURATION = 700;
 
     private static final int INVALID_POINTER = -1;
@@ -49,12 +44,13 @@ public class PullToRefreshView extends ViewGroup {
     private int mTargetPaddingRight;
     private int mTargetPaddingLeft;
 
-    private int   mFrom;
-    private int   mCurrentOffsetTop;
-    private int   mActivePointerId;
+    private int mFrom;
+    private int mCurrentOffsetTop;
+    private int mActivePointerId;
     private float mFromDragPercent;
     private float mCurrentDragPercent;
     private float mInitialMotionY;
+    private float mDragRate;
 
     private boolean mRefreshing;
     private boolean mNotify;
@@ -66,7 +62,7 @@ public class PullToRefreshView extends ViewGroup {
 
     private BaseRefreshView mBaseRefreshView;
 
-    private Interpolator mDecelerateInterpolator;
+    private Interpolator mInterpolator;
 
     private OnRefreshListener onRefreshListener;
 
@@ -80,44 +76,21 @@ public class PullToRefreshView extends ViewGroup {
 
     public PullToRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PullToRefreshView);
-        final int type = a.getInteger(R.styleable.PullToRefreshView_lrefresh, TYPE_ROCKET);
-        a.recycle();
-
-        mDecelerateInterpolator = new DecelerateInterpolator(DECELERATE_INTERPOLATION_FACTOR);
+        mInterpolator = new DecelerateInterpolator(DEFAULT_DECELERATE_INTERPOLATION_FACTOR);
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-
         mRefreshView = new ImageView(context);
+        mDragRate = DEFAULT_DRAG_RATE;
 
-        setRefreshStyle(context, type);
-
+        setDefaultRefreshStype(context);
         addView(mRefreshView);
         setWillNotDraw(false);
         ViewCompat.setChildrenDrawingOrderEnabled(this, true);
     }
 
-    /**
-     * Set landscape's height dynamically because different landscape suitable different heights.
-     *
-     * @param context context
-     * @param type    type of theme which chosen by user
-     * @see {@link #mTotalDragDistance = Utils.convertDpToPixel} in this method
-     */
-    private void setRefreshStyle(Context context, int type) {
+    private void setDefaultRefreshStype(Context context) {
         setRefreshing(false);
-        switch (type) {
-            case TYPE_ROCKET:
-                mBaseRefreshView = new RocketRefreshView(getContext(), this);
-                mTotalDragDistance = Utils.convertDpToPixel(context, DRAG_MAX_DISTANCE);
-                break;
-            case TYPE_SUN:
-                mBaseRefreshView = new SunRefreshView(getContext(), this);
-                mTotalDragDistance = Utils.convertDpToPixel(context, DRAW_MAX_DISTANCE_SUN);
-                break;
-            default:
-                throw new InvalidParameterException("Type is not exists");
-        }
-
+        mBaseRefreshView = new RocketRefreshView(this);
+        mTotalDragDistance = Utils.convertDpToPixel(context, DEFAULT_DRAG_MAX_DISTANCE);
         mRefreshView.setImageDrawable(mBaseRefreshView);
     }
 
@@ -224,7 +197,7 @@ public class PullToRefreshView extends ViewGroup {
 
                 final float y = MotionEventCompat.getY(event, pointerIndex);
                 final float yDiff = y - mInitialMotionY;
-                final float scrollTop = yDiff * DRAG_RATE;
+                final float scrollTop = yDiff * mDragRate;
                 mCurrentDragPercent = scrollTop / mTotalDragDistance;
                 if (mCurrentDragPercent < 0)
                     return false;
@@ -256,7 +229,7 @@ public class PullToRefreshView extends ViewGroup {
                 }
                 final int pointerIndex = MotionEventCompat.findPointerIndex(event, mActivePointerId);
                 final float y = MotionEventCompat.getY(event, pointerIndex);
-                final float overScrollTop = (y - mInitialMotionY) * DRAG_RATE;
+                final float overScrollTop = (y - mInitialMotionY) * mDragRate;
                 mIsBeingDragged = false;
                 if (overScrollTop > mTotalDragDistance) {
                     setRefreshing(true, true);
@@ -282,16 +255,6 @@ public class PullToRefreshView extends ViewGroup {
             }
         } else
             return ViewCompat.canScrollVertically(mTarget, -1);
-    }
-
-    public int getTotalDragDistance() {
-        return mTotalDragDistance;
-    }
-
-    public void setRefreshing(boolean refreshing) {
-        if (mRefreshing != refreshing) {
-            setRefreshing(refreshing, false);
-        }
     }
 
     private void setRefreshing(boolean refreshing, final boolean notify) {
@@ -332,7 +295,7 @@ public class PullToRefreshView extends ViewGroup {
 
         mAnimateToStartPosition.reset();
         mAnimateToStartPosition.setDuration(animationDuration);
-        mAnimateToStartPosition.setInterpolator(mDecelerateInterpolator);
+        mAnimateToStartPosition.setInterpolator(mInterpolator);
         mAnimateToStartPosition.setAnimationListener(mToStartListener);
         mRefreshView.clearAnimation();
         mRefreshView.startAnimation(mAnimateToStartPosition);
@@ -344,7 +307,7 @@ public class PullToRefreshView extends ViewGroup {
 
         mAnimateToCorrectPosition.reset();
         mAnimateToCorrectPosition.setDuration(MAX_OFFSET_ANIMATION_DURATION);
-        mAnimateToCorrectPosition.setInterpolator(mDecelerateInterpolator);
+        mAnimateToCorrectPosition.setInterpolator(mInterpolator);
 
         mRefreshView.clearAnimation();
         mRefreshView.startAnimation(mAnimateToCorrectPosition);
@@ -421,7 +384,46 @@ public class PullToRefreshView extends ViewGroup {
         }
     }
 
+    //////////////////////////////////////////////
+    //           Methods we provided            //
+    //////////////////////////////////////////////
+
     public void setOnRefreshListener(OnRefreshListener onRefreshListener) {
         this.onRefreshListener = onRefreshListener;
     }
+
+    public int getTotalDragDistance() {
+        return mTotalDragDistance;
+    }
+
+    public void setRefreshing(boolean refreshing) {
+        if (mRefreshing != refreshing) {
+            setRefreshing(refreshing, false);
+        }
+    }
+
+    public <T extends BaseRefreshView> void setRefreshView(@NonNull T refreshView) {
+        mBaseRefreshView = refreshView;
+        mRefreshView.setImageDrawable(mBaseRefreshView);
+    }
+
+    public void setTotalDragDistance(Context context, int dp) {
+        if (dp < 0) {
+            throw new InvalidParameterException("dp must >= 0");
+        }
+        mTotalDragDistance = Utils.convertDpToPixel(context, dp);
+    }
+
+    public void setTotalDragDistance(int px) {
+        mTotalDragDistance = px;
+    }
+
+    public void setmInterpolator(@NonNull Interpolator interpolator) {
+        this.mInterpolator = interpolator;
+    }
+
+    public void setDragRate(float dragRate) {
+        mDragRate = dragRate;
+    }
+
 }

@@ -20,7 +20,7 @@ public abstract class BaseRefreshView extends Drawable implements Drawable.Callb
 
     private PullToRefreshView mRefreshLayout;
 
-    public BaseRefreshView(Context context, PullToRefreshView mRefreshLayout) {
+    public BaseRefreshView(PullToRefreshView mRefreshLayout) {
         this.mRefreshLayout = mRefreshLayout;
     }
 

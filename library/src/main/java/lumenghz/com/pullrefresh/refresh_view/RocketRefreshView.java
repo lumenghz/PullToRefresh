@@ -10,6 +10,8 @@ import android.view.animation.Transformation;
 
 import lumenghz.com.pullrefresh.PullToRefreshView;
 import lumenghz.com.pullrefresh.R;
+import lumenghz.com.pullrefresh.internal.AnimationFactory;
+import lumenghz.com.pullrefresh.internal.CreateBitmapFactory;
 import lumenghz.com.pullrefresh.util.Utils;
 
 /**
@@ -69,8 +71,8 @@ public class RocketRefreshView extends BaseRefreshView {
 
     private boolean isRefreshing = false;
 
-    public RocketRefreshView(Context context, final PullToRefreshView layout) {
-        super(context, layout);
+    public RocketRefreshView(final PullToRefreshView layout) {
+        super(layout);
         mParent = layout;
         mMatrix = new Matrix();
         mContext = getContext();
@@ -97,12 +99,12 @@ public class RocketRefreshView extends BaseRefreshView {
 
         mTop = -mParent.getTotalDragDistance();
 
-        mFireTopOffset = mParent.getTotalDragDistance() * 0.6f;
+        mFireTopOffset = mParent.getTotalDragDistance() * 0.62f;
         mFireMoveOffset = Utils.convertDpToPixel(mContext, 20);
 
-        mFire1LeftOffset = (mScreenWidth / 100) * 47.5f;
-        mFire2LeftOffset = (mScreenWidth / 100) * 51f;
-        mFire3LeftOffset = (mScreenWidth / 100) * 53.5f;
+        mFire1LeftOffset = (mScreenWidth / 100) * 49.5f;
+        mFire2LeftOffset = (mScreenWidth / 100) * 53f;
+        mFire3LeftOffset = (mScreenWidth / 100) * 55.5f;
 
         createBitmaps();
     }

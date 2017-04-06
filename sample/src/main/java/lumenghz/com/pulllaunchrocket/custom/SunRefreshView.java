@@ -1,4 +1,4 @@
-package lumenghz.com.pullrefresh.refresh_view;
+package lumenghz.com.pulllaunchrocket.custom;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,12 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
+import lumenghz.com.pulllaunchrocket.R;
 import lumenghz.com.pullrefresh.PullToRefreshView;
-import lumenghz.com.pullrefresh.R;
+import lumenghz.com.pullrefresh.internal.AnimationFactory;
+import lumenghz.com.pullrefresh.internal.CreateBitmapFactory;
+import lumenghz.com.pullrefresh.refresh_view.BaseRefreshView;
 
 /**
  * @author lumeng on 2016-07-01.
@@ -62,8 +64,8 @@ public class SunRefreshView extends BaseRefreshView {
      */
     private int totalDistance;
 
-    public SunRefreshView(Context context, final PullToRefreshView layout) {
-        super(context, layout);
+    public SunRefreshView(final PullToRefreshView layout) {
+        super(layout);
 
         mParent = layout;
         mMatrix = new Matrix();

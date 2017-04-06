@@ -2,10 +2,10 @@
 
 [中文文档](./README_CHN.md)
 
-[![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
 [![Travis](https://img.shields.io/travis/lubeast/PullToRefresh/master.svg?style=flat-square)](https://travis-ci.org/lubeast/PullToRefresh)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PullToRefresh-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/3943)
+[![Github Issues](https://img.shields.io/github/issues/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullToRefresh/issues)
 
 Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of `PullToRefresh`. And that's logic is the fundation of `PullLaunchRocket` also.
 

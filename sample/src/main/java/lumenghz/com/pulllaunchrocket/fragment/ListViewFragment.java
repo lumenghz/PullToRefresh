@@ -17,6 +17,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lumenghz.com.pulllaunchrocket.R;
+import lumenghz.com.pulllaunchrocket.custom.SunRefreshView;
 import lumenghz.com.pullrefresh.PullToRefreshView;
 
 /**
@@ -35,6 +36,11 @@ public class ListViewFragment extends BaseFragment implements PullToRefreshView.
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listview, container, false);
         ButterKnife.bind(this, view);
+
+        SunRefreshView sunRefreshView = new SunRefreshView(mPullRefreshView);
+        mPullRefreshView.setRefreshView(sunRefreshView);
+        mPullRefreshView.setTotalDragDistance(getContext(), 140);
+
         return view;
     }
 

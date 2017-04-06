@@ -1,9 +1,9 @@
 ## PullLaunchRocket
 
-[![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
 [![License](https://img.shields.io/github/license/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullLaunchRocket/blob/master/LICENSE)
 [![Travis](https://img.shields.io/travis/lubeast/PullToRefresh/master.svg?style=flat-square)](https://travis-ci.org/lubeast/PullToRefresh)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PullToRefresh-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/3943)
+[![Github Issues](https://img.shields.io/github/issues/lubeast/PullLaunchRocket.svg?style=flat-square)](https://github.com/lubeast/PullToRefresh/issues)
 
 感谢[Yalantis](https://github.com/Yalantis)为下拉刷新创建了一个炒鸡棒的逻辑案例, 也是`PullLaunchRocket`的基础.
 

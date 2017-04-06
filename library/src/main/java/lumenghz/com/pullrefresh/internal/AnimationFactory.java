@@ -1,4 +1,4 @@
-package lumenghz.com.pullrefresh.refresh_view;
+package lumenghz.com.pullrefresh.internal;
 
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
@@ -19,7 +19,7 @@ public class AnimationFactory {
     private static final Interpolator DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
     private static final Interpolator NORMAL_INTERPOLATOR     = new LinearInterpolator();
 
-    Animation getFireScale(Animation animation) {
+    public Animation getFireScale(Animation animation) {
         configureAnimation(animation,
                 ACCELERATE_INTERPOLATOR,
                 ANIMATION_FIRE_SCALE_DURATION,
@@ -30,7 +30,7 @@ public class AnimationFactory {
         return animation;
     }
 
-    Animation getFireBurn(Animation animation) {
+    public Animation getFireBurn(Animation animation) {
         configureAnimation(animation,
                 DECELERATE_INTERPOLATOR,
                 ANIMATION_FIRE_BURN_DURATION,
@@ -41,7 +41,7 @@ public class AnimationFactory {
         return animation;
     }
 
-    Animation getSunRotate(Animation animation) {
+    public Animation getSunRotate(Animation animation) {
         configureAnimation(animation,
                 NORMAL_INTERPOLATOR,
                 ANIMATION_SUN_ROTATE_DURATION,
