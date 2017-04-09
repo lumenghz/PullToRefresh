@@ -13,13 +13,16 @@ Thanks to [Yalantis](https://github.com/Yalantis) for creating a great logic of 
 
 Give me a `Star` please :D  And welcome to contact me or make a PR if you have any good style, we make it better together.
 
-- style one: launch rocket
+We use Launch-Rocket as our default style.
 
 ![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/rocket.gif)
 
-- style two: sun raise
+And also, we provided a custom refresh style - sunrise
 
 ![rocket](https://raw.github.com/lubeast/PullLaunchRocket/master/screenshots/sunraise.gif)
+
+**Attention : **
+version 1.0.2 is just a pre-release.
 
 ### Usage
 *You can have a look at Sample Project* `sample` for better use.
@@ -36,7 +39,7 @@ allprojects {
 - Add the dependency in your module-level `build.gradle`
 ```groovy
 dependencies {
-    compile 'com.github.lubeast:PullToRefresh:1.0.1'
+    compile 'com.github.lubeast:PullToRefresh:1.0.2'
 }
 ```
 
